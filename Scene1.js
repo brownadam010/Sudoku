@@ -93,6 +93,9 @@ class Scene1 extends Phaser.Scene {
     this.load.image("row9Column7", "assets/sudokuSquare.png");
     this.load.image("row9Column8", "assets/sudokuSquare.png");
     this.load.image("row9Column9", "assets/sudokuSquare.png");
+
+    //retry
+    this.load.image("icon", "assets/icon.png");
   }
 
   create() {

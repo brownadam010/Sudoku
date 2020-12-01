@@ -2,8 +2,8 @@ let config;
 
 window.onload = function() {
   config = {
-    width: 900,
-    height: 900,
+    width: 1200,
+    height: 1200,
     backgroundColor: 0xffffff,
     scene: [Scene1, Scene2],
   }
