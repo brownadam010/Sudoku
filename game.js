@@ -20,7 +20,10 @@ class Sudoku {
       'https://sugoku.herokuapp.com/board?difficulty=random'
     )
     .then((r) => r.json())
-    .then((r) => r.puzzle)
+    .then((puzzle) => {
+      return puzzle;
+    })
+    
   }
   
   async Start()
