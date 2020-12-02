@@ -9,6 +9,7 @@ window.onload = function() {
 let gameDiv = document.getElementById('gameDiv');
 let playGame = document.getElementById('playGame');
 let gameBoard = document.getElementById('game');
+let gameHeader = document.getElementById('header');
 let game;
 
 class Sudoku {
@@ -48,5 +49,6 @@ class Sudoku {
 playGame.addEventListener("click", function(clickEvent) {
   //on play click reveal the sudoku board
   gameDiv.classList.remove("hidden");
+  gameHeader.classList.add("hidden");
 });
 
