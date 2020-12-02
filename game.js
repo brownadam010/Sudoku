@@ -9,7 +9,10 @@ window.onload = function() {
 let gameDiv = document.getElementById('gameDiv');
 let playGame = document.getElementById('playGame');
 let gameBoard = document.getElementById('game');
-let gameHeader = document.getElementById('header');
+let gameHeader = document.getElementById('beforeGameheader');
+let inGameHeader = document.getElementById('inGameHeader');
+let quitGame = document.getElementById('quitGame');
+let quitBtn = document.getElementById('quit');
 let game;
 
 class Sudoku {
@@ -50,5 +53,14 @@ playGame.addEventListener("click", function(clickEvent) {
   //on play click reveal the sudoku board
   gameDiv.classList.remove("hidden");
   gameHeader.classList.add("hidden");
+  inGameHeader.classList.remove("hidden");
+  quitGame.classList.remove("hidden");
+});
+
+quitBtn.addEventListener("click", function(clickEvent) {
+  gameDiv.classList.add("hidden");
+  gameHeader.classList.remove("hidden");
+  inGameHeader.classList.add("hidden");
+  quitGame.classList.add("hidden");
 });
 
