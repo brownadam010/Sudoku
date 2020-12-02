@@ -14,6 +14,7 @@ let game;
 class Sudoku {
 
   getSudokuPuzzle() {
+    //fetching puzzle generated numbers from api
     return fetch(
       'https://sugoku.herokuapp.com/board?difficulty=random'
     )
@@ -27,50 +28,25 @@ class Sudoku {
   
   async Start()
   {
+    //awaiting puzzle response
     var puzzle = await this.getSudokuPuzzle();
-    
-    var line1 = puzzle.board[0];
-    var line2 = puzzle.board[1];
-    var line3 = puzzle.board[2];
-    var line4 = puzzle.board[3];
-    var line5 = puzzle.board[4];
-    var line6 = puzzle.board[5];
-    var line7 = puzzle.board[6];
-    var line8 = puzzle.board[7];
-    var line9 = puzzle.board[8];
-    //Putting Each line in a variable and printing them for reference.
-    console.log(line1);
-    console.log(line2);
-    console.log(line3);
-    console.log(line4);
-    console.log(line5);
-    console.log(line6);
-    console.log(line7);
-    console.log(line8);
-    console.log(line9);
 
-    return this.puzzle;
-    //Reset Gameboard here and draw out your puzzle with the api results.
-  }
-
-  //add response to sudoku board with populated values.
-  generateBoard() {
+    //using for loop to insert puzzle.board values into the sudoku html board.
     for (let i = 0; i < gameBoard.rows.length; i++) {
       for (let x = 0; x < gameBoard.rows[i].cells.length; x++) {
-        let start = this.getSudokuPuzzle();
-        console.log(start);
-        if (start[i][x] != "0") {
-          gameBoard.rows[i].cells[x].innerHTML = start[i][x];
+        if (puzzle.board[i][x] != "0") {
+          gameBoard.rows[i].cells[x].innerHTML = puzzle.board[i][x];
         }
       }
     }
+
+    return this.puzzle;
   }
 
 }
 
 playGame.addEventListener("click", function(clickEvent) {
-  //game = new Sudoku();
-  //game.generateBoard();
+  //on play click reveal the sudoku board
   gameDiv.classList.remove("hidden");
 });
 
