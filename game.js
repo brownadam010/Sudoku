@@ -1,14 +1,8 @@
 
 window.onload = function() {
-  
   let api = new Sudoku();
-<<<<<<< Updated upstream
-  let gameboard = api.Start();
-  console.log(gameboard);
-=======
 
   api.Start();
->>>>>>> Stashed changes
   
 }
 
@@ -33,10 +27,6 @@ class Sudoku {
   
   async Start()
   {
-<<<<<<< Updated upstream
-    let puzzle = await this.getSudokuPuzzle();
-    console.log(puzzle);
-=======
     var puzzle = await this.getSudokuPuzzle();
     
     var line1 = puzzle.board[0];
@@ -58,13 +48,13 @@ class Sudoku {
     console.log(line7);
     console.log(line8);
     console.log(line9);
->>>>>>> Stashed changes
+
     return this.puzzle;
     //Reset Gameboard here and draw out your puzzle with the api results.
   }
 
   //add response to sudoku board with populated values.
-  /*generateBoard() {
+  generateBoard() {
     for (let i = 0; i < gameBoard.rows.length; i++) {
       for (let x = 0; x < gameBoard.rows[i].cells.length; x++) {
         let start = this.getSudokuPuzzle();
@@ -74,7 +64,7 @@ class Sudoku {
         }
       }
     }
-  }*/
+  }
 
 }
 
