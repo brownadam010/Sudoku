@@ -2,6 +2,7 @@
 window.onload = function() {
   
   let api = new Sudoku();
+<<<<<<< Updated upstream
   let gameboard = api.Start();
   console.log(gameboard);
 =======
