@@ -4,6 +4,10 @@ class Scene2 extends Phaser.Scene {
   }
 
   create() {
+
+    var reset;
+
+
     this.row1Column1 = this.add.sprite(0, 0, "row1Column1");
     this.row1Column1.setOrigin(0,0);
     
@@ -254,5 +258,13 @@ class Scene2 extends Phaser.Scene {
 
     this.row9Column9 = this.add.sprite(-8, -8, "row9Column9");
     this.row9Column9.setOrigin(-8,-8);
+    
+    //retry
+    this.icon = this.add.sprite(850, 0, "icon");
+    this.icon.setOrigin(0,0);
+  }
+
+  update(){
+
   }
 }
