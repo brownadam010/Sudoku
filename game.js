@@ -6,10 +6,14 @@ window.onload = function() {
   
 }
 
-let gameDiv = document.getElementById('gameDiv');
-let playGame = document.getElementById('playGame');
-let gameBoard = document.getElementById('game');
-let gameHeader = document.getElementById('header');
+const gameDiv = document.getElementById('gameDiv');
+const playGame = document.getElementById('playGame');
+const gameBoard = document.getElementById('game');
+const gameHeader = document.getElementById('beforeGameheader');
+const inGameHeader = document.getElementById('inGameHeader');
+const quitGame = document.getElementById('quitGame');
+const quitBtn = document.getElementById('quit');
+const completeGame = document.getElementById('complete');
 let game;
 
 class Sudoku {
@@ -44,11 +48,47 @@ class Sudoku {
     return this.puzzle;
   }
 
+  checkWinLose() {
+    let data = new Array(9).fill(0).map(() => new Array(9).fill(0));
+    console.log(data);
+    
+    //loop through same loop used to populate api numbers but now we take all of those rows and add their innerHTMl into an array.
+    for (let i = 0; i < gameBoard.rows.length; i++) {
+      for (let x = 0; x < gameBoard.rows[i].cells.length; x++) {
+        if(gameBoard.rows[i].cells[x].innerHTML != "")
+        {
+          data[i][x] = gameBoard.rows[i].cells[x].innerHTML;
+        } else {
+          data[i][x] = gameBoard.rows[i].cells[x].children[0].value
+        }
+      }
+    }
+
+    console.log(data);
+
+  }
+
 }
+
+
 
 playGame.addEventListener("click", function(clickEvent) {
   //on play click reveal the sudoku board
   gameDiv.classList.remove("hidden");
   gameHeader.classList.add("hidden");
+  inGameHeader.classList.remove("hidden");
+  quitGame.classList.remove("hidden");
+});
+
+quitBtn.addEventListener("click", function(clickEvent) {
+  gameDiv.classList.add("hidden");
+  gameHeader.classList.remove("hidden");
+  inGameHeader.classList.add("hidden");
+  quitGame.classList.add("hidden");
+});
+
+completeGame.addEventListener("click", function(clickEvent) {
+  game = new Sudoku();
+  game.checkWinLose();
 });
 

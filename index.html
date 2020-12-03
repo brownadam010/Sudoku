@@ -5,9 +5,21 @@
     </head>
     <body>
         <div id="header">
-            <h1>Sudoku</h1>
-            <div id="clickToPlay">
-                <button id="playGame">Play Game!</button>
+            <div id="beforeGameheader">
+                <h1>Sudoku</h1>
+                <div id="clickToPlay">
+                    <button id="playGame">Play Game!</button>
+                </div>
+            </div>
+            <div id="inGameHeader" class="hidden">
+                <div id="resetComplete" class="resetComplete">
+                    <div id="resetDiv" class="resetDiv">
+                        <button id="reset">Reset Board</button>
+                    </div>
+                    <div id="completeDiv" class="completeDiv">
+                        <button id="complete">Complete!</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="gameDiv" class="hidden">
@@ -112,6 +124,9 @@
                     <td id = "row9_cell9"><input type = "text" maxlength = 1 autocomplete="off"></td>
                 </tr>
             </table>
+        </div>
+        <div id="quitGame" class="hidden">
+            <button id="quit">Quit Game</button>
         </div>
         
         <script type="text/javascript" src="game.js"></script>
