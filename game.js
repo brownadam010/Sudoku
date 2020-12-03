@@ -3,7 +3,6 @@ window.onload = function() {
   let api = new Sudoku();
 
   api.Start();
-  
 }
 
 const gameDiv = document.getElementById('gameDiv');
@@ -49,17 +48,18 @@ class Sudoku {
   }
 
   checkWinLose() {
-    let data = new Array(9).fill(0).map(() => new Array(9).fill(0));
+    //initiate new array to compare with solution
+    let data = [[],[],[],[],[],[],[],[],[]]
     console.log(data);
     
     //loop through same loop used to populate api numbers but now we take all of those rows and add their innerHTMl into an array.
     for (let i = 0; i < gameBoard.rows.length; i++) {
       for (let x = 0; x < gameBoard.rows[i].cells.length; x++) {
-        if(gameBoard.rows[i].cells[x].innerHTML != "")
+        if(gameBoard.rows[i].cells[x].children[0] != null)
         {
-          data[i][x] = gameBoard.rows[i].cells[x].innerHTML;
-        } else {
           data[i][x] = gameBoard.rows[i].cells[x].children[0].value
+        } else {
+          data[i][x] = gameBoard.rows[i].cells[x].innerHTML;
         }
       }
     }
