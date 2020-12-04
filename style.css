@@ -36,10 +36,23 @@ h1 {
   background-color: white;
 }
 
+.stacked {
+  position: absolute;
+}
+
 #resetDiv {
   float: left;
   margin-top: -100px;
   margin-left: 36%;
+}
+
+div.modal-body {
+  height: 350px;
+  width: 425px;
+}
+
+div.modal-content {
+  width: 450px;
 }
 
 #complete {

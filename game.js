@@ -14,7 +14,12 @@ const quitGame = document.getElementById('quitGame');
 const quitBtn = document.getElementById('quit');
 const completeGame = document.getElementById('complete');
 let game;
-let boardData = [[],[],[],[],[],[],[],[],[]]
+let boardData = [[],[],[],[],[],[],[],[],[]];
+let canvasDiv = document.getElementById('winLoseCanvas');
+let canvasWin = document.getElementById('winGraphic');
+let ctxWin = canvasWin.getContext('2d');
+let canvasLose = document.getElementById('loseGraphic');
+let ctxLose = canvasLose.getContext('2d');
 
 class Sudoku {
 
@@ -131,6 +136,61 @@ function validateBoard(data) {
   return true;
 }
 
+function drawWin() {
+  canvasWin.style.width = '400px';
+  canvasWin.style.height = '300px';
+  ctxWin.stokeStyle = "#000";
+  ctxWin.lineWidth = 1;
+  ctxWin.fillStyle = 'green';
+  ctxWin.fillRect(10, 10, 400, 300);
+  ctxWin.fill();
+  ctxWin.stroke();
+  fadeInWin("You Won!!");
+}
+
+function fadeInWin(text) {
+  let opacity = 0.0, 
+    fadeInterval = setInterval(function() {
+      ctxWin.fillStyle = "rgb(0,0,0," + opacity + ")";
+      ctxWin.font = "24pt Georgia";
+      ctxWin.shadowColor = "black";
+      ctxWin.shadowBlur = 4;
+      ctxWin.fillText(text, 75, 85);
+      opacity = opacity += 0.1;
+      if(opacity > 0.4) {
+        clearInterval(fadeInterval);
+      }
+    }, 500);
+}
+
+function drawLose() {
+  canvasLose.style.width = '400px';
+  canvasLose.style.height = '300px';
+  ctxLose.stokeStyle = "#000";
+  ctxLose.lineWidth = 1;
+  ctxLose.fillStyle = 'red';
+  ctxLose.fillRect(10, 10, 400, 300);
+  ctxWin.fill();
+  ctxWin.stroke();
+  fadeInLose("You Lost :(");
+}
+
+function fadeInLose(text) {
+  let opacity = 0.0, 
+    fadeInterval = setInterval(function() {
+      ctxLose.fillStyle = "rgb(0,0,0," + opacity + ")";
+      ctxLose.font = "24pt Georgia";
+      ctxLose.shadowColor = "black";
+      ctxLose.shadowBlur = 4;
+      ctxLose.fillText(text, 75, 85);
+      opacity = opacity += 0.1;
+      if(opacity > 0.4) {
+        clearInterval(fadeInterval);
+      }
+    }, 500);
+
+}
+
 
 playGame.addEventListener("click", function(clickEvent) {
   //on play click reveal the sudoku board
@@ -148,8 +208,14 @@ quitBtn.addEventListener("click", function(clickEvent) {
 });
 
 completeGame.addEventListener("click", function(clickEvent) {
-  //game = new Sudoku();
-  checkWinLose();
-  console.log(boardData);
+  if(checkWinLose() == true) {
+    //console.log("new lost message");
+    //canvasDiv.classList.remove("hidden");
+    canvasWin.classList.remove("hidden");
+    drawWin();
+  } else {
+    canvasLose.classList.remove("hidden");
+    drawLose();
+  }
 });
 
