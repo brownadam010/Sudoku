@@ -200,6 +200,7 @@ quitBtn.addEventListener("click", function(clickEvent) {
   gameHeader.classList.remove("hidden");
   inGameHeader.classList.add("hidden");
   quitGame.classList.add("hidden");
+  document.location.reload();
 });
 
 completeGame.addEventListener("click", function(clickEvent) {
