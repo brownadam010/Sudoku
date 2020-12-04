@@ -13,6 +13,7 @@ const inGameHeader = document.getElementById('inGameHeader');
 const quitGame = document.getElementById('quitGame');
 const quitBtn = document.getElementById('quit');
 const completeGame = document.getElementById('complete');
+const resetGame = document.getElementById('reset');
 let game;
 let boardData = [[],[],[],[],[],[],[],[],[]];
 let canvasDiv = document.getElementById('winLoseCanvas');
@@ -101,14 +102,8 @@ function checkWinLose() {
   }
 
   //checks to see if all validations come back true and then returns false or true based on that. This will be used to show the winning and losing screen.
-  if(!((validateBoard(boardData) == true) && (validateBoard(grids) == true) && (validateBoard(columns) == true))) {
-    console.log("lost");
-    return false;
-  } else {
-    console.log("win");
-    return true;
-  }
-
+  return (validateBoard(boardData) && validateBoard(grids) && validateBoard(columns));
+  
 }
 
 function validateBoard(data) {
@@ -126,7 +121,7 @@ function validateBoard(data) {
       }
 
       //check if numbers in the row are unique
-      if(firstTest === nextTest) {
+      if(x!== 8 && firstTest === nextTest) {
         return false;
       }
 
@@ -216,6 +211,17 @@ completeGame.addEventListener("click", function(clickEvent) {
   } else {
     canvasLose.classList.remove("hidden");
     drawLose();
+  }
+});
+
+resetGame.addEventListener("click", function() {
+  for (let i = 0; i < gameBoard.rows.length; i++) {
+    for (let x = 0; x < gameBoard.rows[i].cells.length; x++) {
+      if(gameBoard.rows[i].cells[x].children[0] != null)
+      {
+        gameBoard.rows[i].cells[x].children[0].value = "";
+      }
+    }
   }
 });
 
