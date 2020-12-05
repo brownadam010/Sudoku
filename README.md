@@ -1,2 +1,8 @@
 # Sudoku
-Web Game Development Final Project using Phaser 3
+Web Game Development Final Project
+Utilizes:
+  Canvas
+  https://sugoku.herokuapp.com/board?difficulty=random API
+  JS
+  HTML
+  CSS
